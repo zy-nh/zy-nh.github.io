@@ -69,11 +69,27 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         ],
       },
       {
-        text: '页面',
-        link: '/ui/',
+        text: 'Java',
+        link: '/java/',
         items: [
-          { text: 'HTML', link: '/pages/8309a5b876fc95e3/' },
-          { text: 'CSS', link: '/pages/0a83b083bdf257cb/' },
+          {
+            text: 'CS基础',
+            items: [
+              { text: 'OS', link: '/pages/osinfo/' },
+            ],
+          },
+          { 
+            text: 'Java基础',
+            items: [
+              { text: '面向对象', link: '/pages/osinfo/' },
+            ],
+          },
+          { 
+            text: '框架',
+            items: [
+              { text: 'Spring', link: '/pages/osinfo/' },
+            ],
+          },
         ],
       },
       {
