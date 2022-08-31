@@ -81,13 +81,13 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
           { 
             text: 'Java基础',
             items: [
-              { text: '面向对象', link: '/pages/osinfo/' },
+              { text: '面向对象', link: '/pages/basic/' },
             ],
           },
           { 
             text: '框架',
             items: [
-              { text: 'Spring', link: '/pages/osinfo/' },
+              { text: 'Spring', link: '/pages/anno/' },
             ],
           },
         ],
