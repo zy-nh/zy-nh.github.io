@@ -1,27 +1,24 @@
 #!/usr/bin/env sh
-
 # 确保脚本抛出遇到的错误
 set -e
+npm run build # 生成静态文件
+cd docs/.vuepress/dist # 进入生成的文件夹
 
-
-
-# push_addr=`git remote get-url --push origin` # git提交地址，也可以手动设置，比如：push_addr=git@github.com:xugaoyi/vuepress-theme-vdoing.git
-push_addr=`git@github.com:zy-nh/zy-nh.github.io.git` # git提交地址，也可以手动设置，比如：push_addr=git@github.com:xugaoyi/vuepress-theme-vdoing.git
-commit_info=`git describe --all --always --long`
-dist_path=docs/.vuepress/dist # 打包生成的文件夹路径
-push_branch=gh-pages # 推送的分支
-
-# 生成静态文件
-npm run build
-
-# 进入生成的文件夹
-cd $dist_path
-
+# deploy to github
+echo 'zhuyee.cn' > CNAME
+if [ -z "$GITHUB_TOKEN" ]; then
+  msg='deploy'
+  githubUrl=git@github.com:zy-nh/zy-nh.github.io.git
+else
+  msg='来自github action的自动部署'
+  githubUrl=https://zy-nh:${GITHUB_TOKEN}@github.com:zy-nh/zy-nh.github.io.git
+  git config --global user.name "zy-nh"
+  git config --global user.email "1205282944@qq.com"
+fi
 git init
 git add -A
-git commit -m "deploy, $commit_info"
-git push -f $push_addr HEAD:$push_branch
-# git push -f git@github.com:zy-nh/zyblog.git HEAD:gh-pages
+git commit -m "${msg}"
+git push -f $githubUrl master:gh-pages # 推送到github
 
 cd -
-rm -rf $dist_path
+rm -rf docs/.vuepress/dist
