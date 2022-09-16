@@ -16,7 +16,8 @@ jobs: # 工作流
       matrix:
         node-version: [10.x]
 
-    steps: # 步骤
+    # 步骤
+    steps:
       - name: Checkout 🛎️
       uses: actions/checkout@v1 # 使用的动作。格式：userName/repoName。作用：检出仓库，获取源码。 官方actions库：https://github.com/actions
 
