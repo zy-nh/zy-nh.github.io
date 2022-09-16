@@ -11,34 +11,19 @@ on:
 # 任务
 jobs:
   build-and-deploy:
-    # 服务器环境：最新版 Ubuntu
     runs-on: ubuntu-latest
-
-    # 定义node版本
-    strategy:
-      matrix:
-        node-version: [10.x]
-    
     steps:
-      # 拉取代码
-      - name: Checkout
-        uses: actions/checkout@v1
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
+
+      - name: Install and Build 🔧 
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
-          persist-credentials: false
-
-      - name: Use Node.js ${{ matrix.node-version }} # 步骤2
-      uses: actions/setup-node@v1 # 作用：安装nodejs
-      with:
-        node-version: ${{ matrix.node-version }} # 版本
-
-      # 生成静态文件
-      - name: Build
-        run: npm install && npm run build
-
-      # 部署到 GitHub Pages
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} # 也就是我们刚才生成的 secret
-          BRANCH: gh-pages # 部署到 gh-pages 分支，因为 main 分支存放的一般是源码，而 gh-pages 分支则用来存放生成的静态文件
-          FOLDER: docs/.vuepress/dist # vuepress 生成的静态文件存放的地方
+          BRANCH: gh-pages
+          FOLDER: docs/.vuepress/dist
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
