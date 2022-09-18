@@ -103,6 +103,13 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         ],
       },
       {
+        text: '工具|部署',
+        link: '/devops/',
+        items: [
+          { text: 'IDEA', link: '/devops/idea/key/' },
+        ],
+      },
+      {
         text: '更多',
         link: '/more/',
         items: [
