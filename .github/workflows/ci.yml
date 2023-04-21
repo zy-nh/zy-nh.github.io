@@ -1,29 +1,29 @@
-# name: CI
+name: CI
 
-# #on: [push]
+#on: [push]
 
-# # 在master分支发生push事件时触发。
-# on:
-#   push:
-#     branches:
-#       - master  
+# 在master分支发生push事件时触发。
+on:
+  push:
+    branches:
+      - master  
 
-# # 任务
-# jobs:
-#   build-and-deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout 🛎️
-#         uses: actions/checkout@v2.3.1
+# 任务
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.1
 
-#       - name: Install and Build 🔧 
-#         run: |
-#           npm install
-#           npm run build
+      - name: Install and Build 🔧 
+        run: |
+          npm install
+          npm run build
 
-#       - name: Deploy 🚀
-#         uses: JamesIves/github-pages-deploy-action@4.1.3
-#         with:
-#           BRANCH: gh-pages
-#           FOLDER: docs/.vuepress/dist
-#           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.3
+        with:
+          BRANCH: gh-pages
+          FOLDER: docs/.vuepress/dist
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
