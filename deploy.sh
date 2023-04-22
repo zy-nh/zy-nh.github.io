@@ -2,7 +2,7 @@
 # 确保脚本抛出遇到的错误
 set -e
 npm run build # 生成静态文件
-cd docs/.vuepress/dist # 进入生成的文件夹
+# cd docs/.vuepress/dist # 进入生成的文件夹
 
 # deploy to github
 echo 'zhuyee.cn' > CNAME
@@ -15,10 +15,10 @@ else
   git config --global user.name "zy-nh"
   git config --global user.email "1205282944@qq.com"
 fi
-git init
+# git init
 git add -A
 git commit -m "${msg}"
-git push -f $githubUrl master:gh-pages # 推送到github
+git push -f $githubUrl master #:gh-pages # 推送到github
 
-cd -
-rm -rf docs/.vuepress/dist
+# cd -
+# rm -rf docs/.vuepress/dist
